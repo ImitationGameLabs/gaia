@@ -1,0 +1,96 @@
+
+type Timestamp = nat64;
+
+type TreeID = nat32;
+
+type GrowTreeArgs = record {
+    name: text;
+    description: text;
+};
+
+// Stats that are automatically maintain.
+type TreeStats = record {
+    created_at: Timestamp;
+    updated_at: Timestamp;
+    size: nat64;
+    stars: nat64;
+    watchers: nat64;
+};
+
+// Represents a repository.
+type Tree = record {
+    id: Tree;
+
+    // Metadata
+    name: text;
+    description: text;
+
+    stat: TreeStats;
+};
+
+type IssueID = nat32;
+
+type IssueState = variant {
+    open;
+    closed;
+};
+
+type Comment = record {
+    content: text;
+
+    creator: principal;
+    created_at: Timestamp;
+};
+
+// Represents an issue.
+type Issue = record {
+    id: IssueID;
+    tree_id: TreeID;
+
+    title: text;
+    description: text;
+
+    creator: principal;
+    created_at: Timestamp;
+    updated_at: Timestamp;
+    closed_at: Timestamp;
+    state: IssueState;
+
+    comments: vec Comment;
+    tags: vec text;
+
+    parent: IssueID;
+    children: vec IssueID;
+};
+
+service : {
+    "greet": (text) -> (text) query;
+    "whoami": () -> (principal) query;
+
+    "get_trees": () -> (vec Tree) query;
+    "grow": (GrowTreeArgs) -> (Tree);
+
+    // Management functionality of a repository.
+    // Provides the ability to govern the repository.
+
+    // code manangement, for example push, fetch
+    "push": (blob) -> ();
+    "fetch": () -> (blob) query;
+
+    // issue management
+    "get_issues": () -> (vec Issue) query;
+    "get_issue": (IssueID) -> (Issue) query;
+    "open_issue": (Issue) -> (IssueID);
+    "update_issue": (IssueID, Issue) -> ();
+    "close_issue": (IssueID) -> ();
+
+    // // merge request management
+    // "get_merge_requests": () -> (vec merge_request) query;
+    // "get_merge_request": (merge_request_id) -> (merge_request) query;
+    // "open_merge_request": (merge_request) -> (merge_request_id);
+    // "update_merge_request": (merge_request_id, merge_request) -> ();
+    // "close_merge_request": (merge_request_id) -> ();
+    // "accept_merge_request": (merge_request_id) -> ();
+
+    // // 
+}

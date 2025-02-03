@@ -1,16 +1,43 @@
 {
   "canisters": {
-    "gaia_backend": {
-      "candid": "src/gaia_backend/gaia_backend.did",
+    "internet_identity": {
+      "candid": "https://github.com/dfinity/internet-identity/releases/latest/download/internet_identity.did",
+      "frontend": {},
+      "remote": {
+        "id": {
+          "ic": "rdmx6-jaaaa-aaaaa-aaadq-cai"
+        }
+      },
+      "type": "custom",
+      "wasm": "https://github.com/dfinity/internet-identity/releases/latest/download/internet_identity_dev.wasm.gz"
+    },
+    "gaia_ledger": {
+      "type": "custom",
+      "candid": "https://github.com/dfinity/ic/releases/download/ledger-suite-icrc-2025-01-21/ledger.did",
+      "wasm": "https://github.com/dfinity/ic/releases/download/ledger-suite-icrc-2025-01-21/ic-icrc1-ledger.wasm.gz",
+      "init_arg_file": "src/candid/gaia_ledger_init.did"
+    },
+
+    "forest": {
+      "candid": "src/forest/forest.did",
       "declarations": {
         "node_compatibility": true
       },
-      "package": "gaia_backend",
+      "package": "forest",
+      "type": "rust"
+    },
+    "mycelium": {
+      "candid": "src/mycelium/mycelium.did",
+      "declarations": {
+        "node_compatibility": true
+      },
+      "package": "mycelium",
       "type": "rust"
     },
     "gaia_frontend": {
       "dependencies": [
-        "gaia_backend"
+        "forest",
+        "mycelium"
       ],
       "source": [
         "src/gaia_frontend/dist"

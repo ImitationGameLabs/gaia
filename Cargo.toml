@@ -1,5 +1,6 @@
 [workspace]
 members = [
-    "src/gaia_backend"
+    "src/forest",
+    "src/mycelium"
 ]
 resolver = "2"

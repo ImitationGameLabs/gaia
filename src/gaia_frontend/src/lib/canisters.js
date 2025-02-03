@@ -1,4 +1,4 @@
-import { createActor, canisterId } from 'declarations/gaia_backend';
+import { createActor, canisterId } from 'declarations/forest_backend';
 import { building } from '$app/environment';
 
 function dummyActor() {
