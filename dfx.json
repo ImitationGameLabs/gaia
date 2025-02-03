@@ -1,0 +1,30 @@
+{
+  "canisters": {
+    "gaia_backend": {
+      "candid": "src/gaia_backend/gaia_backend.did",
+      "declarations": {
+        "node_compatibility": true
+      },
+      "package": "gaia_backend",
+      "type": "rust"
+    },
+    "gaia_frontend": {
+      "dependencies": [
+        "gaia_backend"
+      ],
+      "source": [
+        "src/gaia_frontend/dist"
+      ],
+      "type": "assets",
+      "workspace": "gaia_frontend"
+    }
+  },
+  "defaults": {
+    "build": {
+      "args": "",
+      "packtool": ""
+    }
+  },
+  "output_env_file": ".env",
+  "version": 1
+}

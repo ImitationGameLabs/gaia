@@ -1,0 +1,5 @@
+[workspace]
+members = [
+    "src/gaia_backend"
+]
+resolver = "2"
