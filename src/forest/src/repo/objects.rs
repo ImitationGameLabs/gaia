@@ -1,4 +1,6 @@
 
+type Timestamp = u64;
+
 #[derive(Debug, Clone, PartialEq)]
 pub enum ObjectType {
     Blob,
@@ -30,9 +32,9 @@ pub struct Commit {
     pub tree_hash: String,
     pub parent_hashes: Vec<String>,
     pub author: String,
-    pub create_timestamp: u64,
+    pub create_timestamp: Timestamp,
     pub commiter: String,
-    pub commit_timestamp: u64,
+    pub commit_timestamp: Timestamp,
     pub message: String,
 }
 
@@ -41,6 +43,6 @@ pub struct Tag {
     pub commit_hash: String,
     pub name: String,
     pub tagger: String,
-    pub tag_timestamp: u64,
+    pub tag_timestamp: Timestamp,
     pub message: String,
 }

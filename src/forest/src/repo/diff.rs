@@ -3,7 +3,7 @@ use std::path::PathBuf;
 
 #[derive(Debug)]
 pub enum Diff {
-    Added(PathBuf),
+    Added(PathBuf), 
     Modified {
         path: PathBuf,
         old: String,
