@@ -1,0 +1,38 @@
+
+import "common.did";
+import "comment.did";
+
+type IssueState = variant {
+    open;
+    closed;
+};
+
+// Represents an issue.
+type Issue = record {
+    id: IssueID;
+    tree_id: TreeID;
+
+    title: text;
+    description: text;
+
+    creator: principal;
+    created_at: Timestamp;
+    updated_at: Timestamp;
+    closed_at: Timestamp;
+    state: IssueState;
+
+    comments: vec Comment;
+    tags: vec text;
+
+    parent: IssueID;
+    children: vec IssueID;
+};
+
+service : {
+    // issue management
+    "get_issues": () -> (vec Issue) query;
+    "get_issue": (IssueID) -> (Issue) query;
+    "open_issue": (Issue) -> (IssueID);
+    "update_issue": (IssueID, Issue) -> ();
+    "close_issue": (IssueID) -> ();
+}

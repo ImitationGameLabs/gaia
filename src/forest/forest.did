@@ -1,7 +1,6 @@
 
-type Timestamp = nat64;
-
-type TreeID = nat32;
+import "../candid/common.did";
+import service "../candid/issue.did";
 
 type GrowTreeArgs = record {
     name: text;
@@ -28,41 +27,6 @@ type Tree = record {
     stat: TreeStats;
 };
 
-type IssueID = nat32;
-
-type IssueState = variant {
-    open;
-    closed;
-};
-
-type Comment = record {
-    content: text;
-
-    creator: principal;
-    created_at: Timestamp;
-};
-
-// Represents an issue.
-type Issue = record {
-    id: IssueID;
-    tree_id: TreeID;
-
-    title: text;
-    description: text;
-
-    creator: principal;
-    created_at: Timestamp;
-    updated_at: Timestamp;
-    closed_at: Timestamp;
-    state: IssueState;
-
-    comments: vec Comment;
-    tags: vec text;
-
-    parent: IssueID;
-    children: vec IssueID;
-};
-
 service : {
     "greet": (text) -> (text) query;
     "whoami": () -> (principal) query;
@@ -76,13 +40,6 @@ service : {
     // code manangement, for example push, fetch
     "push": (blob) -> ();
     "fetch": () -> (blob) query;
-
-    // issue management
-    "get_issues": () -> (vec Issue) query;
-    "get_issue": (IssueID) -> (Issue) query;
-    "open_issue": (Issue) -> (IssueID);
-    "update_issue": (IssueID, Issue) -> ();
-    "close_issue": (IssueID) -> ();
 
     // // merge request management
     // "get_merge_requests": () -> (vec merge_request) query;

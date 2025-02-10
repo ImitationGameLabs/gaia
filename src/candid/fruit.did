@@ -1,6 +1,5 @@
 
-
-type FruitID = nat64;
+import "common.did";
 
 type FruitState = variant {
     open;

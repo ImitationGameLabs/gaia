@@ -1,4 +1,4 @@
-import "../candid/fruit.did";
+import service "../candid/fruit.did";
 
 type ForestID = principal;
 

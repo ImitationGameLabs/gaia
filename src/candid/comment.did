@@ -1,0 +1,8 @@
+import "common.did";
+
+type Comment = record {
+    content: text;
+
+    creator: principal;
+    created_at: Timestamp;
+};
