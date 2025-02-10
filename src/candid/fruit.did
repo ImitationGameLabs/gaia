@@ -1,0 +1,31 @@
+
+
+type FruitID = nat64;
+
+type FruitState = variant {
+    open;
+    claimed;
+    completed;
+    closed; 
+};
+
+type Fruit = record {
+    id: FruitID;
+    title: text;
+    description: text;
+    rewards: nat;
+    creator: principal;
+    state: FruitState;
+    claimed_by: opt principal;
+};
+
+service : {
+    // Fruit related functions.
+    // The update and close functions are only for the creator of the fruit.
+    "get_fruits": () -> (vec FruitID) query;
+    "get_fruit": (id: FruitID) -> (Fruit) query;
+    "claim_fruit": (id: FruitID) -> (bool);
+    "post_fruit": (fruit: Fruit) -> (FruitID);
+    "update_fruit": (id: FruitID, fruit: Fruit) -> (bool);
+    "close_fruit": (id: FruitID) -> (bool);
+}

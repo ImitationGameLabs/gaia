@@ -1,22 +1,4 @@
-
-type BountyID = nat64;
-
-type BountyState = variant {
-    open;
-    claimed;
-    completed;
-    closed; 
-};
-
-type Bounty = record {
-    id: BountyID;
-    title: text;
-    description: text;
-    rewards: nat;
-    creator: principal;
-    state: BountyState;
-    claimed_by: opt principal;
-};
+import "../candid/fruit.did";
 
 type ForestID = principal;
 
@@ -28,15 +10,6 @@ type Forest = record {
 
 service : {
     "greet": (text) -> (text) query;
-
-    // Bounty related functions.
-    // The update and close functions are only for the creator of the bounty.
-    "get_bounties": () -> (vec BountyID) query;
-    "get_bounty": (id: BountyID) -> (Bounty) query;
-    "claim_bounty": (id: BountyID) -> (bool);
-    "post_bounty": (bounty: Bounty) -> (BountyID);
-    "update_bounty": (id: BountyID, bounty: Bounty) -> (bool);
-    "close_bounty": (id: BountyID) -> (bool);
 
     // Forest related functions.
     // Details of the forest are handled by the forest canister.
