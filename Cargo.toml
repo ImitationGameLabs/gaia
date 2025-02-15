@@ -1,6 +1,6 @@
 [workspace]
 members = [
     "src/forest",
-    "src/mycelium"
+    "src/gaia"
 ]
 resolver = "2"

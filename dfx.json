@@ -26,18 +26,18 @@
       "package": "forest",
       "type": "rust"
     },
-    "mycelium": {
-      "candid": "src/mycelium/mycelium.did",
+    "gaia": {
+      "candid": "src/gaia/gaia.did",
       "declarations": {
         "node_compatibility": true
       },
-      "package": "mycelium",
+      "package": "gaia",
       "type": "rust"
     },
     "gaia_frontend": {
       "dependencies": [
         "forest",
-        "mycelium"
+        "gaia"
       ],
       "source": [
         "src/gaia_frontend/dist"

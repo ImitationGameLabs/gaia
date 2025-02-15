@@ -4,4 +4,4 @@ type Timestamp = nat64;
 type FruitID = nat64;
 
 type TreeID = nat32;
-type IssueID = nat32;
+type HyphaID = nat32;

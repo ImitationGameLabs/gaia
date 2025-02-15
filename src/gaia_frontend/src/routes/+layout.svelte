@@ -30,7 +30,7 @@
         <Navigation.Tile labelExpanded="Settings" href="#" title="settings" label="Settings"></Navigation.Tile>
       {/snippet}
     </Navigation.Rail>
-    <div class="flex items-center justify-center">
+    <div class="h-screen w-full flex items-center justify-center">
 
       {@render children()}
       <!-- <p class="opacity-20">(Content)</p> -->

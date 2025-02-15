@@ -1,8 +1,11 @@
 <script lang="ts">
-    // Fruit object
-    let { fruit } = $props();
+    import type { Fruit } from "../../../../declarations/gaia/gaia.did";
 
+    interface Props {
+      fruit: Fruit;
+	  }
 
+    let { fruit }: Props = $props();
 </script>
 
 <a
@@ -14,16 +17,16 @@
   </header>
   <article class="space-y-4 p-4">
     <div>
-      <h2 class="h6">Haha Fruit</h2>
-      <h3 class="h3">{fruit.name}</h3>
+      <!-- <h2 class="h6">Haha Fruit</h2> -->
+      <h3 class="h3">{fruit.title}</h3>
     </div>
     <p class="opacity-60">
-      Lorem ipsum dolor sit amet consectetur adipisicing elit. Numquam aspernatur provident eveniet eligendi cumque consequatur tempore sint
-      nisi sapiente. Iste beatae laboriosam iure molestias cum expedita architecto itaque quae rem.
+      {fruit.description}
     </p>
   </article>
   <footer class="flex items-center justify-between gap-4 p-4">
-    <small class="opacity-60">By Alex</small>
-    <small class="opacity-60">On {new Date().toLocaleDateString()}</small>
+    <medium class="opacity-60">{fruit.rewards} GAIA</medium>
+    <medium class="opacity-60">By {fruit.creator}</medium>
+    <medium class="opacity-60">On {new Date(Number(fruit.created_at)).toLocaleDateString()}</medium>
   </footer>
 </a>

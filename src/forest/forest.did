@@ -1,6 +1,6 @@
 
 import "../candid/common.did";
-import service "../candid/issue.did";
+import service "../candid/hypha.did";
 
 type GrowTreeArgs = record {
     name: text;

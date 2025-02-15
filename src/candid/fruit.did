@@ -12,10 +12,20 @@ type Fruit = record {
     id: FruitID;
     title: text;
     description: text;
-    rewards: nat;
+
     creator: principal;
+    created_at: Timestamp;
     state: FruitState;
+
+    rewards: nat;
+
+    // Returnable deposit.
+    deposit: nat;
+
     claimed_by: opt principal;
+
+
+    // mission: 
 };
 
 service : {
@@ -24,7 +34,7 @@ service : {
     "get_fruits": () -> (vec FruitID) query;
     "get_fruit": (id: FruitID) -> (Fruit) query;
     "claim_fruit": (id: FruitID) -> (bool);
-    "post_fruit": (fruit: Fruit) -> (FruitID);
+    "offer_fruit": (fruit: Fruit) -> (FruitID);
     "update_fruit": (id: FruitID, fruit: Fruit) -> (bool);
-    "close_fruit": (id: FruitID) -> (bool);
+    "_fruit": (id: FruitID) -> (bool);
 }

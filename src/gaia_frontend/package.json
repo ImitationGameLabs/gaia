@@ -4,7 +4,7 @@
   "version": "0.0.0",
   "type": "module",
   "scripts": {
-    "setup": "npm i && dfx canister create forest && dfx generate forest  && dfx canister create mycelium && dfx generate mycelium && dfx deploy",
+    "setup": "npm i && dfx canister create forest && dfx generate forest  && dfx canister create gaia && dfx generate gaia && dfx deploy",
     "start": "vite --port 3000",
     "prebuild": "dfx generate",
     "build": "svelte-kit sync && tsc && vite build",

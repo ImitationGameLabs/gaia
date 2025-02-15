@@ -1,6 +1,6 @@
 <div>
     <p>Backend canister ID: {process.env.CANISTER_ID_FOREST}</p>
-    <p>Backend canister ID: {process.env.CANISTER_ID_MYCELIUM}</p>
+    <p>Backend canister ID: {process.env.CANISTER_ID_GAIA}</p>
     <p>Frontend canister ID: {process.env.CANISTER_ID_GAIA_FRONTEND}</p>
     <p>Internet Identity canister ID: {process.env.CANISTER_ID_INTERNET_IDENTITY}</p>
 </div>
