@@ -1,4 +1,4 @@
-import type { Theme } from '@skeletonlabs/skeleton/themes';
+import { Theme } from '@skeletonlabs/skeleton/themes';
 
 const theme = {
   "name": "mytheme",
@@ -224,6 +224,6 @@ const theme = {
   "metadata": {
     "version": "3.0.0"
   }
-} satisfies Theme;
+};
 
 export default theme;

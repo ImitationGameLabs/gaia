@@ -1,5 +1,5 @@
 <script lang="ts">
-    import type { Fruit } from "../../../../declarations/gaia/gaia.did";
+    import type { Fruit } from "declarations/gaia/gaia.did";
 
     interface Props {
       fruit: Fruit;
@@ -25,7 +25,7 @@
     </p>
   </article>
   <footer class="flex items-center justify-between gap-4 p-4">
-    <medium class="opacity-60">{fruit.rewards} GAIA</medium>
+    <medium class="opacity-60">Reward {fruit.rewards} GAIA</medium>
     <medium class="opacity-60">By {fruit.creator}</medium>
     <medium class="opacity-60">On {new Date(Number(fruit.created_at)).toLocaleDateString()}</medium>
   </footer>

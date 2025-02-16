@@ -14,6 +14,9 @@ const config = {
       precompress: false,
       strict: true,
     }),
+    alias: {
+      'declarations/*': '../declarations'
+    }
   },
   preprocess: vitePreprocess()
 };

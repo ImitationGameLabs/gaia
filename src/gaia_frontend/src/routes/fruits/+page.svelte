@@ -4,13 +4,12 @@
 
 </script>
 
-<div class="h-screen w-full grid grid-rows-[auto_1fr_auto]">
-	<header class="bg-red-500 p-4">Fruits</header>
-	<main class="bg-green-500 p-4 space-y-4 columns-3">
+<div class="h-full w-full bg-green-500">
+    <div class="grid grid-cols-3 p-4 space-y-4 ">
         {#each fruits as fruit (fruit.id)}
             <Fruit fruit={fruit} />
         {/each}
-	</main>
-	<footer class="bg-blue-500 p-4">(footer)</footer>
+    </div>
 </div>
+
 
