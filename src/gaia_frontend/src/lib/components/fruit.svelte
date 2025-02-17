@@ -10,7 +10,7 @@
 
 <a
   href="/#"
-  class="card preset-filled-surface-100-900 border-[1px] border-surface-200-800 card-hover divide-surface-200-800 block max-w-md divide-y overflow-hidden"
+  class="card preset-filled-surface-100-900 border-[1px] border-surface-200-800 card-hover divide-surface-200-800 block max-w-md divide-y overflow-hidden h-full"
 >
   <header>
     <!-- <img src={imgSrc} class="aspect-[21/9] w-full grayscale hue-rotate-90" alt="banner" /> -->

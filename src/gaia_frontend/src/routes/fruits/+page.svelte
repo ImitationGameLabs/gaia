@@ -4,8 +4,8 @@
 
 </script>
 
-<div class="h-full w-full bg-green-500">
-    <div class="grid grid-cols-3 p-4 space-y-4 ">
+<div class="h-full w-full">
+    <div class="columns-3 p-4 space-y-4 ">
         {#each fruits as fruit (fruit.id)}
             <Fruit fruit={fruit} />
         {/each}
