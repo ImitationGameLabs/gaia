@@ -1,8 +1,11 @@
 <script>
   import "../app.css";
   import { Navigation } from '@skeletonlabs/skeleton-svelte';
+  import IconHouse from 'lucide-svelte/icons/house';
   import IconTrees from 'lucide-svelte/icons/trees';
   import IconApple from 'lucide-svelte/icons/apple';
+  import IconBug from 'lucide-svelte/icons/bug';
+  import IconWaypoints from 'lucide-svelte/icons/waypoints';
 
   let { children } = $props();
 </script>
@@ -17,16 +20,19 @@
           {/snippet}
           {#snippet tiles()}
             <Navigation.Tile id="0" label="Nest" href="/nest">
-              <IconTrees />
+              <IconHouse />
             </Navigation.Tile>
             <Navigation.Tile id="1" label="Fruits" href="/fruits">
               <IconApple />
             </Navigation.Tile>
             <Navigation.Tile id="2" label="Mycelium" href="/mycelium">
+              <IconWaypoints />
+            </Navigation.Tile>
+            <Navigation.Tile id="3" label="Forest" href="/forest">
               <IconTrees />
             </Navigation.Tile>
-            <Navigation.Tile id="3" label="Test" href="/test">
-              <IconTrees />
+            <Navigation.Tile id="4" label="Test" href="/test">
+              <IconBug />
             </Navigation.Tile>
           {/snippet}
           {#snippet footer()}
