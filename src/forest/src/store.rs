@@ -2,6 +2,8 @@ use ic_stable_structures::memory_manager::{MemoryId, MemoryManager, VirtualMemor
 use ic_stable_structures::{DefaultMemoryImpl, StableBTreeMap};
 use std::cell::RefCell;
 
+use crate::types::{Hypha, HyphaID};
+
 type Memory = VirtualMemory<DefaultMemoryImpl>;
 
 thread_local! {
@@ -11,7 +13,13 @@ thread_local! {
         RefCell::new(MemoryManager::init(DefaultMemoryImpl::default()));
 
     // Initialize a `StableBTreeMap` with `MemoryId(0)`.
-    static MAP: RefCell<StableBTreeMap<u128, String, Memory>> = RefCell::new(
+    static OBJECTS: RefCell<StableBTreeMap<String, String, Memory>> = RefCell::new(
+        StableBTreeMap::init(
+            MEMORY_MANAGER.with(|m| m.borrow().get(MemoryId::new(0))),
+        )
+    );
+
+    static HYPHAE: RefCell<StableBTreeMap<HyphaID, Hypha, Memory>> = RefCell::new(
         StableBTreeMap::init(
             MEMORY_MANAGER.with(|m| m.borrow().get(MemoryId::new(0))),
         )

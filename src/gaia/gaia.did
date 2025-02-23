@@ -1,7 +1,5 @@
 import service "../candid/fruit.did";
 
-type ForestID = principal;
-
 type Forest = record {
     id: ForestID;
     name: text;

@@ -1,21 +1,43 @@
 
 import "common.did";
-import "comment.did";
 
 // Mycelium, Hypha
 
 type HyphaState = variant {
-    open;
-    closed;
+    Open;
+    Closed;
+};
+
+type Child = record {
+    id: HyphaID;
+    weight: nat32;
+};
+
+type ChildrenRelation = variant {
+    parallel;
+    serial;
+};
+
+type HyphaArgs = record {
+    title: text;
+    description: text;
+};
+
+type HyphaChildren = record {
+    children: vec Child;
+    children_relation: ChildrenRelation;
 };
 
 // Can think of it as a Issue in the legacy Github platform.
 type Hypha = record {
     id: HyphaID;
-    tree_id: TreeID;
+    forest_id: ForestID;
 
     title: text;
     description: text;
+
+    comments: vec Comment;
+    tags: vec text;
 
     creator: principal;
     created_at: Timestamp;
@@ -23,18 +45,20 @@ type Hypha = record {
     closed_at: Timestamp;
     state: HyphaState;
 
-    comments: vec Comment;
-    tags: vec text;
+    parent: opt HyphaID;
+    children: opt HyphaChildren;
+};
 
-    parent: HyphaID;
-    children: vec HyphaID;
+type GetHyphaResult = variant {
+    Ok: Hypha;
+    Err: text;
 };
 
 // hypha management
 service : {
-    "get_hyphae": () -> (vec Hypha) query;
-    "get_hypha": (HyphaID) -> (Hypha) query;
-    "open_hypha": (Hypha) -> (HyphaID);
-    "update_hypha": (HyphaID, Hypha) -> ();
-    "close_hypha": (HyphaID) -> ();
+    "open_hypha": (HyphaArgs) -> (HyphaID);
+    "get_hypha": (HyphaID) -> (GetHyphaResult) query;
+
+    // "update_hypha": (HyphaID, HyphaArgs) -> ();
+    // "close_hypha": (HyphaID) -> ();
 }

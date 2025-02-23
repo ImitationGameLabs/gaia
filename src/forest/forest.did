@@ -1,5 +1,5 @@
 
-import "../candid/common.did";
+// import "../candid/common.did";
 import service "../candid/hypha.did";
 
 type GrowTreeArgs = record {
@@ -40,14 +40,4 @@ service : {
     // code manangement, for example push, fetch
     "push": (blob) -> ();
     "fetch": () -> (blob) query;
-
-    // // merge request management
-    // "get_merge_requests": () -> (vec merge_request) query;
-    // "get_merge_request": (merge_request_id) -> (merge_request) query;
-    // "open_merge_request": (merge_request) -> (merge_request_id);
-    // "update_merge_request": (merge_request_id, merge_request) -> ();
-    // "close_merge_request": (merge_request_id) -> ();
-    // "accept_merge_request": (merge_request_id) -> ();
-
-    // // 
 }
