@@ -4,10 +4,3 @@ type Timestamp = nat64;
 type ForestID = principal;
 type FruitID = nat64;
 type HyphaID = nat32;
-
-type Comment = record {
-    content: text;
-
-    creator: principal;
-    created_at: Timestamp;
-};

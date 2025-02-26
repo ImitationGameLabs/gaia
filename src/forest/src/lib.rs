@@ -25,7 +25,7 @@ fn whoami() -> Principal {
 #[update]
 // #[candid::candid_method]
 fn open_hypha(args: HyphaArgs) -> HyphaID {
-    SERVICE.with(|service| service.borrow_mut().open_hypha(args))
+    SERVICE.with(|service| service.borrow_mut().new_hypha(args))
 }
 
 #[query]

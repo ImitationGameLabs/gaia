@@ -58,7 +58,7 @@ impl Default for ForestService {
 
 
 impl ForestService {
-    pub fn open_hypha(&mut self, args: HyphaArgs) -> HyphaID {
+    pub fn new_hypha(&mut self, args: HyphaArgs) -> HyphaID {
         let id = self.get_next_hypha_id();
 
         let now = self.env.now();

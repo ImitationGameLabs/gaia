@@ -35,8 +35,7 @@ type Hypha = record {
 
     title: text;
     description: text;
-
-    comments: vec Comment;
+    
     tags: vec text;
 
     creator: principal;
@@ -45,6 +44,7 @@ type Hypha = record {
     closed_at: Timestamp;
     state: HyphaState;
 
+    // Comments are included in children hypha.
     parent: opt HyphaID;
     children: opt HyphaChildren;
 };
@@ -56,7 +56,7 @@ type GetHyphaResult = variant {
 
 // hypha management
 service : {
-    "open_hypha": (HyphaArgs) -> (HyphaID);
+    "new_hypha": (HyphaArgs) -> (HyphaID);
     "get_hypha": (HyphaID) -> (GetHyphaResult) query;
 
     // "update_hypha": (HyphaID, HyphaArgs) -> ();
