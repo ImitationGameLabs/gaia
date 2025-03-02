@@ -5,8 +5,6 @@ use std::borrow::Cow;
 use candid::{CandidType, Deserialize, Principal, Encode, Decode};
 use ic_stable_structures::storable::{Storable, Bound};
 
-const MAX_VALUE_SIZE: u32 = 10000;
-
 pub type HyphaID = u32;
 pub type Timestamp = u64;
 
@@ -42,6 +40,12 @@ pub struct HyphaChildren {
 }
 
 #[derive(Clone, Debug, CandidType, Deserialize)]
+pub struct HyphaArgs {
+    pub title: String,
+    pub description: String,
+}
+
+#[derive(Clone, Debug, CandidType, Deserialize)]
 pub struct Hypha {
     pub id: HyphaID,
     pub forest_id: Principal,
@@ -62,13 +66,6 @@ pub struct Hypha {
     pub children: Option<HyphaChildren>,
 }
 
-
-#[derive(Clone, Debug, CandidType, Deserialize)]
-pub struct HyphaArgs {
-    pub title: String,
-    pub description: String,
-}
-
 impl Storable for Hypha {
     fn to_bytes(&self) -> std::borrow::Cow<[u8]> {
         Cow::Owned(Encode!(self).unwrap())
@@ -78,35 +75,13 @@ impl Storable for Hypha {
         Decode!(bytes.as_ref(), Self).unwrap()
     }
 
-    const BOUND: Bound = Bound::Bounded {
-        max_size: MAX_VALUE_SIZE,
-        is_fixed_size: false,
-    };
+    const BOUND: Bound = Bound::Unbounded;
     
     fn to_bytes_checked(&self) -> Cow<[u8]> {
         let bytes = self.to_bytes();
-        if let ic_stable_structures::storable::Bound::Bounded {
-            max_size,
-            is_fixed_size,
-        } = Self::BOUND
-        {
-            if is_fixed_size {
-                std::assert_eq!(
-                    bytes.len(),
-                    max_size as usize,
-                    "expected a fixed-size element with length {} bytes, but found {} bytes",
-                    max_size,
-                    bytes.len()
-                );
-            } else {
-                assert!(
-                    bytes.len() <= max_size as usize,
-                    "expected an element with length <= {} bytes, but found {} bytes",
-                    max_size,
-                    bytes.len()
-                );
-            }
-        }
+
+        // TODO check the content size of hypha.
+
         bytes
     }
 }
