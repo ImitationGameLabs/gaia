@@ -1,16 +1,15 @@
 
-use ic_stable_structures::memory_manager::{MemoryId, MemoryManager, VirtualMemory};
+use ic_stable_structures::memory_manager::{MemoryId, VirtualMemory, MemoryManager};
 use ic_stable_structures::{DefaultMemoryImpl, StableBTreeMap, StableCell};
 
-use std::cell::RefCell;
-use crate::env::{EmptyEnvironment, CanisterEnvironment, Environment};
+use crate::env::Environment;
 use crate::types::*;
 
 type Memory = VirtualMemory<DefaultMemoryImpl>;
 
-thread_local! {
-    pub static SERVICE: RefCell<ForestService> = RefCell::default();
-}
+const OBJECTS_MEMORY_ID: MemoryId = MemoryId::new(0);
+const HYPHAE_MEMORY_ID: MemoryId = MemoryId::new(1);
+const NEXT_HYPHA_ID_MEMORY_ID: MemoryId = MemoryId::new(2);
 
 pub struct ForestService {
     pub env: Box<dyn Environment>,
@@ -23,41 +22,42 @@ pub struct ForestService {
 
     // TODO: Maps sha1 to object
     pub objects: StableBTreeMap<String, String, Memory>,
-    pub hyphae: StableBTreeMap<HyphaID, Hypha, Memory>,
+    // pub refs: StableBTreeMap<String, String, Memory>,
 
+    // A new form of issues
+    pub hyphae: StableBTreeMap<HyphaID, Hypha, Memory>,
     pub next_hypha_id: StableCell<HyphaID, Memory>,
+
+    // TODO Merges
 }
 
-impl Default for ForestService {
-    fn default() -> Self {
+impl ForestService {
+    pub fn new(env: Box<dyn Environment>) -> Self {
         let memory_manager = MemoryManager::init(DefaultMemoryImpl::default());
         
         let objects = StableBTreeMap::init(
-               memory_manager.get(MemoryId::new(0))
+               memory_manager.get(OBJECTS_MEMORY_ID)
         );
 
         let hyphae = StableBTreeMap::init(
-            memory_manager.get(MemoryId::new(1))
+            memory_manager.get(HYPHAE_MEMORY_ID)
         );
 
         // FIXME unwrap
         let next_hypha_id = StableCell::init(
-            memory_manager.get(MemoryId::new(2)),
+            memory_manager.get(NEXT_HYPHA_ID_MEMORY_ID),
             0
         ).unwrap();
 
         Self {
-            env: Box::new(CanisterEnvironment {}),
+            env,
             memory_manager,
             objects,
             hyphae,
             next_hypha_id,
         }
     }
-}
 
-
-impl ForestService {
     pub fn new_hypha(&mut self, args: HyphaArgs) -> HyphaID {
         let id = self.get_next_hypha_id();
 

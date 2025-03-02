@@ -1,25 +1,26 @@
 mod repo;
 mod env;
-mod store;
 mod service;
 mod types;
 mod hooks;
 
-use candid::Principal;
-use ic_cdk::{query, update, caller};
+use env::CanisterEnvironment;
 use types::*;
-use service::SERVICE;
+use service::ForestService;
 
+use std::cell::RefCell;
 
+use ic_cdk::{query, update};
+
+thread_local! {
+    pub static SERVICE: RefCell<ForestService> = RefCell::new(
+        ForestService::new(Box::new(CanisterEnvironment{}))
+    );
+}
 
 #[query]
 fn greet(name: String) -> String {
     format!("Hello, {}!", name)
-}
-
-#[query]
-fn whoami() -> Principal {
-    caller()
 }
 
 #[update]
