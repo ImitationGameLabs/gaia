@@ -9,13 +9,6 @@ pub type HyphaID = u32;
 pub type Timestamp = u64;
 
 #[derive(Clone, Debug, CandidType, Deserialize)]
-pub struct Comment {
-    pub content: String,
-    pub creator: Principal,
-    pub create_at: Timestamp,
-}
-
-#[derive(Clone, Debug, CandidType, Deserialize)]
 pub enum HyphaState {
     Open,
     Close,
@@ -53,7 +46,6 @@ pub struct Hypha {
     pub title: String,
     pub description: String,
     
-    pub comments: Vec<Comment>,
     pub tags: Vec<String>,
 
     pub creator: Principal,

@@ -68,7 +68,6 @@ impl ForestService {
             forest_id: self.env.canister_id(),
             title: args.title,
             description: args.description,
-            comments: vec![],
             tags: vec![],
             creator: self.env.caller(),
             created_at: now,
