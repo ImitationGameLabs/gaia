@@ -1,0 +1,71 @@
+import "common.did"
+
+type Type = variant {
+    Blob;
+    Tree; 
+    Commit;
+    Tag;
+};
+
+type Signature = record {
+    name: text;
+    email: text;
+    time: nat64;
+};
+
+type Entry = record {
+    mode: nat16;
+    filename: text;
+    oid: text;
+};
+
+type Tree = record {
+    entries: vec Entry;
+};
+
+type Commit = record {
+    tree_hash: text;
+    parent_hashes: vec text;
+    author: Signature;
+    commiter: Signature;
+    message: text;
+};
+
+type Tag = record {
+    target: text;
+    target_kind: Type;
+    name: text;
+    tagger: opt Signature;
+    message: text;
+    pgp_signature: opt blob;
+};
+
+type Object = variant {
+    Blob: blob;
+    Tree: Tree;
+    Commit: Commit;
+    Tag: Tag;
+};
+
+type PushArgs = record {
+    blob: blob;
+};
+
+type PushResult = variant {
+    Ok;
+    Err: text;
+};
+
+type FetchArgs = record {
+    oid: text;
+};
+
+type FetchResult = variant {
+    Ok: Object;
+    Err: text;
+};
+
+service : {
+    "push": (PushArgs) -> (PushResult);
+    "fetch": (FetchArgs) -> (FetchResult) query;
+}

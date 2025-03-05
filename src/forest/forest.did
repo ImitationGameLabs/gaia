@@ -1,6 +1,7 @@
 
 // import "../candid/common.did";
 import service "../candid/hypha.did";
+import service "../candid/git.did";
 
 type GrowTreeArgs = record {
     name: text;
@@ -28,16 +29,7 @@ type Tree = record {
 };
 
 service : {
-    "greet": (text) -> (text) query;
-    "whoami": () -> (principal) query;
+    // "get_trees": () -> (vec Tree) query;
+    // "grow": (GrowTreeArgs) -> (Tree);
 
-    "get_trees": () -> (vec Tree) query;
-    "grow": (GrowTreeArgs) -> (Tree);
-
-    // Management functionality of a repository.
-    // Provides the ability to govern the repository.
-
-    // code manangement, for example push, fetch
-    "push": (blob) -> ();
-    "fetch": () -> (blob) query;
 }
