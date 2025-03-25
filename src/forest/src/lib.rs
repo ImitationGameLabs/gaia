@@ -1,4 +1,4 @@
-mod repo;
+
 mod env;
 mod service;
 mod types;
@@ -25,6 +25,15 @@ fn open_hypha(args: HyphaArgs) -> HyphaID {
 
 #[query]
 fn get_hypha(id: HyphaID) -> Result<Hypha, String> {
-    SERVICE.with(|service| service.borrow_mut().get_hypha(id))
+    SERVICE.with(|service| service.borrow().get_hypha(id))
 }
 
+#[update]
+fn push(args: PushArgs) -> Result<(), String> {
+    SERVICE.with(|service: &RefCell<ForestService>| service.borrow_mut().push(args))
+}
+
+#[query]
+fn fetch(args: FetchArgs) -> Result<Vec<u8>, String> {
+    SERVICE.with(|service| service.borrow().fetch(args))
+}

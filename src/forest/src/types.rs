@@ -59,11 +59,11 @@ pub struct Hypha {
 }
 
 impl Storable for Hypha {
-    fn to_bytes(&self) -> std::borrow::Cow<[u8]> {
+    fn to_bytes(&self) -> Cow<[u8]> {
         Cow::Owned(Encode!(self).unwrap())
     }
 
-    fn from_bytes(bytes: std::borrow::Cow<[u8]>) -> Self {
+    fn from_bytes(bytes: Cow<[u8]>) -> Self {
         Decode!(bytes.as_ref(), Self).unwrap()
     }
 
@@ -77,3 +77,46 @@ impl Storable for Hypha {
         bytes
     }
 }
+
+#[derive(Clone, Debug, CandidType, Deserialize)]
+pub struct Ref {
+    pub name: String,
+    pub oid: Vec<u8>,
+}
+
+impl Storable for Ref {
+    fn to_bytes(&self) -> Cow<[u8]> {
+        Cow::Owned(Encode!(self).unwrap())
+    }
+
+    fn from_bytes(bytes: Cow<[u8]>) -> Self {
+        Decode!(bytes.as_ref(), Self).unwrap()
+    }
+
+    const BOUND: Bound = Bound::Unbounded;
+    
+    fn to_bytes_checked(&self) -> Cow<[u8]> {
+        let bytes = self.to_bytes();
+
+        // TODO check the content size of hypha.
+        bytes
+    }
+}
+
+
+#[derive(Clone, Debug, CandidType, Deserialize)]
+pub struct PushArgs {
+    pub oid: Vec<u8>,
+    pub blob: Vec<u8>,
+}
+
+#[derive(Clone, Debug, CandidType, Deserialize)]
+pub struct PushResult(Result<Vec<u8>, String>);
+
+#[derive(Clone, Debug, CandidType, Deserialize)]
+pub struct FetchArgs {
+    pub oid: Vec<u8>
+}
+
+#[derive(Clone, Debug, CandidType, Deserialize)]
+pub struct FetchResult(Result<Vec<u8>, String>);

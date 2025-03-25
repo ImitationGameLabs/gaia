@@ -1,6 +1,6 @@
 
 use ic_stable_structures::memory_manager::{MemoryId, VirtualMemory, MemoryManager};
-use ic_stable_structures::{DefaultMemoryImpl, StableBTreeMap, StableCell};
+use ic_stable_structures::{DefaultMemoryImpl, StableBTreeMap, StableVec, StableCell};
 
 use crate::env::Environment;
 use crate::types::*;
@@ -21,8 +21,8 @@ pub struct ForestService {
     pub memory_manager: MemoryManager<DefaultMemoryImpl>, 
 
     // TODO: Maps sha1 to object
-    pub objects: StableBTreeMap<String, String, Memory>,
-    // pub refs: StableBTreeMap<String, String, Memory>,
+    pub objects: StableBTreeMap<Vec<u8>, Vec<u8>, Memory>,
+    pub heads: StableVec<Ref, Memory>,
 
     // A new form of issues
     pub hyphae: StableBTreeMap<HyphaID, Hypha, Memory>,
@@ -85,6 +85,22 @@ impl ForestService {
 
     pub fn get_hypha(&self, id: HyphaID) -> Result<Hypha, String> {
         self.hyphae.get(&id).ok_or(String::from("Not found"))
+    }
+
+    pub fn push(&mut self, args: PushArgs) -> Result<(), String> {
+        if let None = self.objects.insert(args.oid, args.blob) {
+            Ok(())
+        } else {
+            Err(String::from("duplicated object id"))
+        }
+    }
+
+    pub fn fetch(&self, args: FetchArgs) -> Result<Vec<u8>, String> {
+        if let Some(blob) = self.objects.get(&args.oid) {
+            Ok(blob)
+        } else {
+            Err(String::from("not found"))
+        }
     }
 
     fn get_next_hypha_id(&mut self) -> HyphaID {
