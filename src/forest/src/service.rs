@@ -22,7 +22,7 @@ pub struct ForestService {
 
     // TODO: Maps sha1 to object
     pub objects: StableBTreeMap<Vec<u8>, Vec<u8>, Memory>,
-    pub heads: StableVec<Ref, Memory>,
+    // pub heads: StableVec<Ref, Memory>,
 
     // A new form of issues
     pub hyphae: StableBTreeMap<HyphaID, Hypha, Memory>,
