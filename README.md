@@ -1,4 +1,5 @@
 # Gaia - The Web3 Github
+The project is currently in its early stages, with most development happening at another repository [Git Remote Helper](https://github.com/ImitationGameLabs/git-remote-helper)
 
 ## Introduction
 Gaia is a Web3 platform that brings sustainable infrastructure to open source projects through token engineering. Inspired by nature's ecosystems, we use tokens as value carriers (like seeds) to engage users and help projects thrive organically.
@@ -29,4 +30,4 @@ For development timeline, see [docs/ROADMAP.md](docs/ROADMAP.md)
 For naming philosophy, see [docs/NAMING.md](docs/NAMING.md)
 
 ## Contributing
-We welcome contributions! Please see [CONTRIBUTE.md](CONTRIBUTE.md) for guidelines.
+We welcome contributions! Please see [CONTRIBUTING.md](CONTRIBUTING.md) for guidelines.
