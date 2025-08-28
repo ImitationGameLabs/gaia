@@ -1,6 +1,6 @@
 
 type PushArgs = record {
-    blob: blob;
+    obj: blob;
 };
 
 type PushResult = variant {
