@@ -11,10 +11,8 @@
     "format": "prettier --write \"src/**/*.{json,js,jsx,ts,tsx,css,scss}\""
   },
   "dependencies": {
-    "@dfinity/agent": "^3.2.3",
     "@dfinity/auth-client": "^3.2.3",
-    "@dfinity/candid": "^3.2.3",
-    "@dfinity/principal": "^3.2.3",
+    "@icp-sdk/core": "^4.0.1",
     "@tailwindcss/postcss": "^4.1.12",
     "lucide-svelte": "^0.542.0",
     "postcss": "^8.5.6",

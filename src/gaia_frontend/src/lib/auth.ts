@@ -1,55 +1,34 @@
 import { writable } from "svelte/store";
-import { idlFactory } from "declarations/forest";
-import { Actor, HttpAgent } from "@dfinity/agent";
-import type { HttpAgentOptions, ActorConfig } from "@dfinity/agent";
+import { Ed25519KeyIdentity } from "@icp-sdk/core/identity";
+import { HttpAgent } from "@icp-sdk/core/agent";
 
-// Creates an actor for the Backend canister
-type Options = {
-  agentOptions?: HttpAgentOptions,
-  actorOptions?: ActorConfig,
+import { canisterId as forestCanisterId, createActor as createForestActor } from "declarations/forest";
+import { canisterId as gaiaCanisterId, createActor as createGaiaActor } from "declarations/gaia";
+
+export function createAgentHost(): string | undefined {
+  return process.env.DFX_NETWORK === "ic"
+    ? "https://icp-api.io"
+    : undefined
 }
 
-export function createActor(options: Options) {
-  const hostOptions = {
-    host:
-      process.env.DFX_NETWORK === "ic"
-        ? `https://${process.env.CANISTER_ID_FOREST}.ic0.app`
-        : undefined,
-  };
-
-  if (!options) {
-    options = {
-      agentOptions: hostOptions,
-    };
-  } else if (!options.agentOptions) {
-    options.agentOptions = hostOptions;
-  } else {
-    options.agentOptions.host = hostOptions.host;
+export function createActors(agent: HttpAgent) {
+  return {
+    forest: createForestActor(forestCanisterId),
+    gaia: createGaiaActor(gaiaCanisterId)
   }
-
-  const agent = HttpAgent.createSync({ ...options.agentOptions });
-
-  // Fetch root key for certificate validation during development
-  if (process.env.DFX_NETWORK !== "ic") {
-    agent.fetchRootKey().catch((err) => {
-      console.warn(
-        "Unable to fetch root key. Check to ensure that your local replica is running"
-      );
-      console.error(err);
-    });
-  }
-
-  // Creates an actor with using the candid interface and the HttpAgent
-  let actor = Actor.createActor(idlFactory, {
-    agent,
-    canisterId: process.env.CANISTER_ID_FOREST,
-    ...options?.actorOptions,
-  });
-
-  return actor;
 }
 
-export const auth = writable({
+export const defaultIdentity = Ed25519KeyIdentity.generate()
+
+const defaultAgent = HttpAgent.createSync({
+  host: createAgentHost(),
+  identity: defaultIdentity,
+})
+
+export const defaultAuth = {
   loggedIn: false,
-  actor: createActor(),
-});
+  agent: defaultAgent,
+  actors: createActors(defaultAgent)
+}
+
+export const auth = writable(defaultAuth);

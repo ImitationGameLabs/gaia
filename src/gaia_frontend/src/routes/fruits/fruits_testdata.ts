@@ -1,5 +1,5 @@
 import type { Fruit, FruitState } from "../../../../declarations/gaia/gaia.did";
-import { Principal } from "@dfinity/principal";
+import { Principal } from "@icp-sdk/core/principal";
 
 export const fruits: Fruit[] = [
     {

@@ -11,7 +11,7 @@
 </script>
 
 <div>
-  <header class="sticky top-0 h-20 w-full bg-red-500"></header>
+  <header class="sticky top-0 h-20 w-full bg-surface-200-800"></header>
   <main class="border-surface-100-900 grid h-[640px] w-full grid-cols-[auto_1fr] border-[1px]">
       <div>
         <Navigation.Rail>
@@ -41,10 +41,8 @@
         </Navigation.Rail>
       </div>
      
-      <div class="min-h-screen h-fit w-full flex items-center justify-center bg-green-500">
-  
+      <div class="min-h-screen h-fit w-full flex items-center justify-center">
         {@render children()}
-        <!-- <p class="opacity-20">(Content)</p> -->
       </div>
   </main>
   <footer></footer>

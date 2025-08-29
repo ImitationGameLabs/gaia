@@ -1,12 +1,12 @@
-<script>
+<script lang="ts">
     import { AuthClient } from "@dfinity/auth-client";
     import { onMount } from "svelte";
-    import { auth, createActor } from "../auth";
+    import { auth, createActors, createAgentHost, defaultAuth, defaultIdentity } from "../auth";
+    import { HttpAgent } from "@icp-sdk/core/agent";
   
-    /** @type {AuthClient} */
-    let client;
-  
-    let whoami = $auth.actor.whoami();
+    let client: AuthClient;
+    
+    let whoami = $state(defaultIdentity.getPrincipal());
   
     onMount(async () => {
       client = await AuthClient.create();
@@ -16,16 +16,18 @@
     });
   
     function handleAuth() {
+      const agent = HttpAgent.createSync({
+        host: createAgentHost(),
+        identity: client.getIdentity(),
+      })
+      
       auth.update(() => ({
         loggedIn: true,
-        actor: createActor({
-          agentOptions: {
-            identity: client.getIdentity(),
-          },
-        }),
+        agent,
+        actors: createActors(agent),
       }));
   
-      whoami = $auth.actor.whoami();
+      whoami = client.getIdentity().getPrincipal();
     }
   
     function login() {
@@ -40,46 +42,30 @@
   
     async function logout() {
       await client.logout();
-      auth.update(() => ({
-        loggedIn: false,
-        actor: createActor(),
-      }));
+
+      auth.update(() => (defaultAuth));
   
-      whoami = $auth.actor.whoami();
+      whoami = await $auth.agent.getPrincipal();
     }
-  </script>
+</script>
   
-  <div class="container">
+<div class="container">
+  <div>
     {#if $auth.loggedIn}
-      <div>
-        <button on:click={logout}>Log out</button>
-      </div>
+      <button onclick={logout} class="rounded-2xl preset-filled-secondary-500">Log out</button>
     {:else}
-      <button on:click={login}>Authenticate in with Internet Identity</button>
+      <button onclick={login} class="rounded preset-filled-primary-500">Authenticate in with Internet Identity</button>
     {/if}
-  
-    <div class="principal-info">
-      {#await whoami}
-        Querying caller identity...
-      {:then principal}
-        Your principal ID is
-        <code>{principal}</code>
-  
-        {#if principal.isAnonymous()}
-          (anonymous)
-        {/if}
-      {/await}
-    </div>
   </div>
-  
-  <style>
-    .container {
-      margin: 64px 0;
-      background-color: antiquewhite;
-    }
-  
-    .principal-info {
-      margin-top: 32px;
-      background-color: blue;
-    }
-  </style>
+
+  <div class="principal-info">
+      Your principal ID is
+      <code>{whoami}</code>
+
+      {#if whoami.isAnonymous()}
+        (anonymous)
+      {:else if !$auth.loggedIn}
+        (guest)
+      {/if}
+  </div>
+</div>
