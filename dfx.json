@@ -19,7 +19,7 @@
     },
 
     "forest": {
-      "candid": "src/forest/forest.did",
+      "candid": "src/forest_canisters/forest/forest.did",
       "declarations": {
         "node_compatibility": true
       },
@@ -27,7 +27,7 @@
       "type": "rust"
     },
     "gaia": {
-      "candid": "src/gaia/gaia.did",
+      "candid": "src/gaia_canisters/gaia/gaia.did",
       "declarations": {
         "node_compatibility": true
       },
