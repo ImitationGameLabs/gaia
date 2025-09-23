@@ -1,3 +1,5 @@
+> _This document describes the economic model provided by the Gaia platform to all hosted projects. For the project's high-level philosophy, please see our **[Project Vision](./VISION.md)**._
+
 # "Proof-of-Contribution": A New Economic Model for Open-Source
 
 ## 1. Introduction: Beyond Tips and Bounties
@@ -38,7 +40,7 @@ This optionality is critical for attracting a diverse pool of talent with varyin
 
 The viability of this entire economic model hinges on solving one profound challenge: **How to objectively, fairly, and scalably quantify the value of diverse contributions?**
 
-This "Contribution Oracle" problem is non-trivial. Is a critical security fix worth more than a well-written tutorial? How do you value an insightful architectural suggestion in a discussion forum? A simple `git diff` is insufficient.
+This "Contribution Oracle" problem is the most critical implementation detail. Our proposed solution is a hierarchical, AI-assisted arbitration model, detailed in our document on **[Contribution Quantification](./CONTRIBUTION_QUANTIFICATION.md)**.
 
 ## 5. Synergy with AI Governance
 

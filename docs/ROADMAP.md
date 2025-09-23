@@ -17,7 +17,7 @@ If we further break down the functionalities at this layer, we get：
  - Negotiation of minimal required objects for transfer.
  - Transfer adapters. (HTTPS or RPC approaches)
 
-For more details on the RPC approach, see [RPC_TRANSPORT.md](RPC_TRANSPORT.md)
+For more details on the RPC approach, see [RPC_TRANSPORT.md](./impl/RPC_TRANSPORT.md)
 
 ## Pull Request
 This feature relies on git diff and git merge algorithms. We may reference either gix or git's source code for implementation. Ideally, we should reuse code from the gix library where possible.

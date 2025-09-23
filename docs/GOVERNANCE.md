@@ -1,4 +1,6 @@
-# Progressive Decentralization Strategy for Gaia
+> _This document describes the governance framework provided by the Gaia platform to all hosted projects. For the project's high-level philosophy, please see our **[Project Vision](./VISION.md)**._
+
+# A Framework for Progressive Decentralization
 
 ## The Governance Cold Start Problem
 

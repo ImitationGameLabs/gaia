@@ -1,3 +1,5 @@
+> _This document details the methodology for quantifying contributions, a core component of our economic model. For the broader economic framework, please see our document on **[Economics](./ECONOMICS.md)**._
+
 # A Hierarchical Model for Contribution Quantification
 
 ## 1. Introduction: The Contribution Oracle Problem

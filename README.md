@@ -1,33 +1,25 @@
-# Gaia - The Web3 Github
-The project is currently in its early stages, with most development happening at another repository [Git Remote Helper](https://github.com/ImitationGameLabs/git-remote-helper)
+# Gaia - The Autonomous Web3 GitHub
 
-## Introduction
-Gaia is a Web3 platform that brings sustainable infrastructure to open source projects through token engineering. Inspired by nature's ecosystems, we use tokens as value carriers (like seeds) to engage users and help projects thrive organically.
+Gaia is a decentralized platform designed to become the foundation for autonomous, sustainable open-source ecosystems. It provides any project with a framework for AI-augmented governance and an ownership-based economic model, with the goal of making them truly unstoppable.
 
-## Vision
-Empower open source projects with sustainable infrastructure. Like the fertile goddess ***Gaia***, we provide the foundation for creations to thrive.
+Our core principles are:
 
-### Why Web3 GitHub?
-Traditional GitHub (Web2) faces fundamental limitations:
-- **Centralized Control**: Single entity governs platform rules and content
-- **Limited Incentives**: No native value exchange for contributors
-- **Vulnerability**: Single point of failure for project ecosystems
+1.  **AI-Augmented Governance:** A framework for projects to utilize AI Agents as DAO members, ensuring objective analysis and operational persistence.
+2.  **Proof-of-Contribution Economics:** A model that allows projects to reward contributors with native tokens, treating them as co-founders with real equity.
 
-Gaia solves these through Web3 principles:
-- **Automatic**: Smart contracts automate governance and payouts, ensuring transparent execution without intermediaries
-- **Incentives**: Native token rewards for contributions, creating sustainable economic alignment between users and projects
-- **Transparency**: Not only public issues, PRs and discussions, token flows show how value moves through the ecosystem.
-- **Censorship-resistant**: Censorship-resistant repositories with permanent availability
-- **True Ownership**: Community maintain control through smart contracts.
+As a core part of our strategy, the Gaia project itself will be hosted on the platform, using its own tools to drive development and prove the model's viability. The project is under active development.
 
-## Architecture
-For detailed architecture, see [docs/ARCHITECTURE.md](docs/ARCHITECTURE.md)
+## Explore Gaia
 
-## Roadmap
-For development timeline, see [docs/ROADMAP.md](docs/ROADMAP.md)
+To fully understand the vision and architecture of Gaia, please explore the following documents. We recommend starting with the Vision.
 
-## Naming Philosophy
-For naming philosophy, see [docs/NAMING.md](docs/NAMING.md)
+*   **[📄 The Vision](./docs/VISION.md):** Start here. Learn about the grand vision of AI as DAO members and the future of autonomous, self-evolving open-source projects.
+*   **[🏛️ The Governance Model](./docs/GOVERNANCE.md):** Discover our strategy for "Progressive Decentralization" and how we solve the governance cold-start problem.
+*   **[💰 The Economic Model](./docs/ECONOMICS.md):** Understand the "Proof-of-Contribution" model that treats contributors as owners.
+*   **[⚖️ Contribution Quantification](./docs/CONTRIBUTION_QUANTIFICATION.md):** Dive deep into the hierarchical, AI-assisted framework for fairly valuing contributions.
 
-## Contributing
-We welcome contributions! Please see [CONTRIBUTING.md](CONTRIBUTING.md) for guidelines.
+---
+
+*   **[🚀 For Developers: How to Contribute](./CONTRIBUTING.md):** Ready to build? This is your guide to setting up the development environment and making your first contribution.
+*   **[🛠️ Technical Architecture](./docs/impl/ARCHITECTURE.md):** For a detailed look at the technical components and structure of the Gaia platform.
+*   **[🗺️ Project Roadmap](./docs/ROADMAP.md):** See the development timeline and what features are coming next.
