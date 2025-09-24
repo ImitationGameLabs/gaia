@@ -16,7 +16,7 @@ Welcome to the central guide for Gaia's documentation. This page provides a stru
 - **For Governance & Tokenomics Enthusiasts:**
   1.  Follow the "For Everyone" path.
   2.  Explore the [DAO Cold Start Problem](./problems.md#1-the-dao-cold-start-problem) and [Contribution Quantification](./problems.md#2-contribution-quantification-and-distribution) sections.
-  3.  Dive deep into our [Explorations](./INDEX.md#explorations) below.
+  3.  Dive deep into our [Explorations](./index.md#explorations) below.
 
 ---
 

@@ -1,16 +1,29 @@
-# Gaia - The Autonomous Web3 GitHub
+# Gaia - Infrastructure for Autonomous Open Source
 
-Gaia is a decentralized platform designed to become the foundation for autonomous, sustainable open-source ecosystems. It provides any project with a framework for AI-augmented governance and an ownership-based economic model, with the goal of making them truly unstoppable.
+Gaia is building the foundation for truly autonomous open-source projects—digital ecosystems that can sustain and evolve themselves long after their creators have moved on. We're creating the infrastructure where projects can transition from human-dependent codebases to self-governing digital organisms.
 
-Our core principles are:
+Our mission is to solve the fundamental paradox of open-source: projects need centralized agility to begin, but require decentralized resilience to endure. Gaia provides the path from one to the other.
 
-1.  **AI-Augmented Governance:** A framework for projects to utilize AI Agents as DAO members, ensuring objective analysis and operational persistence.
-2.  **Proof-of-Contribution Economics:** A model that allows projects to reward contributors with native tokens, treating them as co-founders with real equity.
+## Start Here: Understanding Gaia
 
-As a core part of our strategy, the Gaia project itself will be hosted on the platform, using its own tools to drive development and prove the model's viability. The project is under active development.
+To get the most out of Gaia, we recommend starting with these key documents that explain our vision and approach.
 
-## Explore Gaia
+### The Vision
+[**The Gaia Vision**](./docs/vision.md) - Understand our ultimate goal of creating autonomous open-source projects that can sustain themselves through built-in economic and governance mechanisms.
 
-To fully understand the vision, architecture, and philosophy of Gaia, we have prepared a comprehensive documentation guide. It provides a structured overview and suggested reading paths for all audiences.
+### The Problems We're Solving
+[**Core Challenges**](./docs/problems.md) - Explore the fundamental problems facing open-source sustainability, from governance cold starts to contribution quantification.
 
-**➡️ [Explore the Documentation Guide](./docs/INDEX.md)**
+## Complete Documentation Guide
+
+For a structured overview of all our documentation with suggested reading paths for different audiences, visit our comprehensive documentation guide:
+
+[**Documentation Guide**](./docs/index.md)
+
+## Project Status
+
+Gaia is under active development. We're currently building the core infrastructure on the Internet Computer platform. The project itself will eventually run on Gaia to demonstrate the viability of our approach.
+
+## Get Involved
+
+Interested in contributing? Check out our [contribution guide](./CONTRIBUTING.md) to get started with the development environment and learn about our contribution workflow.
