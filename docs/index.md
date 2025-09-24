@@ -39,6 +39,17 @@ Welcome to the central guide for Gaia's documentation. This page provides a stru
 | [Technical Architecture](./implementations/architecture.md) | `Active`      | A high-level overview of Gaia's technical components and structure.      |
 | [Candid RPC Transport](./implementations/rpc-transport.md) | `In-Progress` | Deep-dive into the design of the Git remote helper's RPC mechanism.      |
 
+### Development Conventions
+
+| Document                                             | Status        | Description                                                              |
+| ---------------------------------------------------- | ------------- | ------------------------------------------------------------------------ |
+| [Frontend Tech Stack](./conventions/frontend/tech-stack.md) | `Active`      | Technology stack choices and framework conventions for frontend development. |
+| [Frontend Coding Standards](./conventions/frontend/coding-standards.md) | `Active`      | Code style and best practices for frontend development.                  |
+| [Component Architecture](./conventions/frontend/component-architecture.md) | `Active`      | Component design patterns and architecture guidelines.                   |
+| [Hierarchical UX Design](./conventions/ux-design/hierarchical-design.md) | `Active`      | Progressive disclosure and layered customization design principles.      |
+| [Interaction Patterns](./conventions/ux-design/interaction-patterns.md) | `Active`      | Standard interaction patterns and user experience guidelines.            |
+| [Accessibility Standards](./conventions/ux-design/accessibility.md) | `Active`      | Web accessibility compliance and implementation guidelines.              |
+
 ### Explorations
 
 These documents represent conceptual thinking and are subject to change.
