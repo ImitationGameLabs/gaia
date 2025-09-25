@@ -1,10 +1,10 @@
 # The Gaia Vision
 
-We envision a world where every open-source project can achieve true autonomy—becoming unstoppable digital organisms that thrive long after their creators have moved on.
+We envision a world where every open-source project can achieve true autonomy—becoming **unstoppable** digital organisms that thrive long after their creators have moved on.
 
 ## The Core Promise
 
-Gaia exists to solve the fundamental paradox of open-source: projects need centralized agility to begin, but require decentralized resilience to endure. We believe the answer lies not in choosing one over the other, but in creating a path from one to the other.
+Gaia exists to solve the fundamental challenge of open-source: projects need decentralized architecture to achieve true autonomy, but early-stage conditions often prevent effective decentralization. We bridge this gap by creating pathways that enable projects to evolve from centralized beginnings to autonomous ecosystems.
 
 Our mission is to give projects life—to transform them from fragile codebases dependent on human maintainers into self-sustaining ecosystems that evolve on their own terms.
 
