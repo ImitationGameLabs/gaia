@@ -1,64 +1,99 @@
 # Architecture
 
+## Overview
+
+Gaia employs a layered architecture that separates platform infrastructure from community-specific functionality. This design enables stable platform operations while allowing communities to evolve independently with their own governance and economic models.
+
+## Three-Layer Architecture Hierarchy
+
+### 1. Gaia Layer (Platform Level)
+The foundational platform layer providing cross-cutting infrastructure and platform-wide services.
+
+**Canisters:**
+- **Gaia Canister**: Platform root handling user identity and authentication
+- **User Index Canister**: User discovery and social features across the platform
+- **Forest Index Canister**: Forest discovery and platform-wide search
+
+**Purpose:** Stable platform infrastructure, user management, cross-community features
+
+### 2. Forest Layer (Community Level)
+Self-contained communities that host multiple repositories and implement independent governance.
+
+**Per-Forest Canisters:**
+- **Forest Root Canister**: Community identity and core metadata
+- **Forest Controller Canister**: Governance, upgrades, and DAO operations
+- **Ledger Canister**: Financial infrastructure using ICRC1 standard
+- **Bounty Index Canister**: Task marketplace and economic engine
+
+**Purpose:** Autonomous communities with customized governance and economic models
+
+### 3. Repository Layer (Project Level)
+Individual projects within Forest communities, each with dedicated storage and collaboration capabilities.
+
+**Per-Repository Canisters:**
+- **Repository Canister**: Primary entry point for repository operations, Git object storage, and metadata
+- **Collaboration Canister**: Issue tracking, pull requests, and code review (bundled with Repository Canister)
+
+**Purpose:** Project-specific storage and collaboration with clear separation of concerns
+
 ## Project Structure
+
 ```
 ├── src/
-│   ├── candid/             # Candid interface definitions
-│   ├── forest/             # Forest canister (repository)
-│   ├── gaia/               # Gaia canister (core platform logic)
-│   ├── gaia_frontend/      # Frontend application
-│   └── git-remote-gaia/    # CLI helper (planned)
-├── docs/                   # Project documentation
+│   ├── candid/                    # Candid interface definitions
+│   ├── gaia_canisters/           # Platform layer canisters
+│   │   ├── gaia/                 # Platform root canister
+│   │   ├── user_index/           # User discovery and social features
+│   │   └── forest_index/         # Forest discovery and search
+│   ├── forest_canisters/         # Community layer canisters
+│   │   ├── forest_root/          # Forest identity and metadata
+│   │   ├── forest_controller/    # Governance and operations
+│   │   ├── ledger/               # Financial infrastructure (ICRC1)
+│   │   ├── bounty_index/         # Task marketplace
+│   │   ├── repository/           # Git repository storage and metadata
+│   │   └── collaboration/        # Issue tracking and PR workflows
+│   ├── gaia_frontend/            # Frontend application
+│   └── git-remote-gaia/          # CLI helper (planned)
+├── docs/                         # Project documentation
 ```
 
-## Directory Structure Overview
+## Detailed Architecture Documentation
 
-### Forest Canister
-Serves as the repository container, implementing an efficient Git Object DB with content-addressable storage. This canister handles:
-- Git repository management
-- Issue tracking and pull request workflows
-- Access control for repositories
+For comprehensive technical details, see:
+- [Platform Layer Architecture](./architecture/platform-layer.md)
+- [Community Layer Architecture](./architecture/community-layer.md)
+- [Repository Model Architecture](./architecture/repository-model.md)
 
-### Git-Remote-Gaia (Planned)
+## Key Design Principles
 
-![Git Remote Helper](images/git-remote-gaia.jpg)
+### Stability Through Separation
+- **Platform Layer**: Stable core infrastructure with minimal changes
+- **Community Layer**: Independent evolution with contained risk
+- **Clear Boundaries**: Well-defined interfaces between layers
 
-A command-line tool that extends Git to interact with repositories on the Internet Computer. Designed with stateless RPC principles to minimize computational load on IC canisters.
+### Scalable Governance
+- Each Forest implements its own governance model
+- Platform provides common infrastructure
+- Communities can experiment with different economic models
 
-Key features:
-- Git protocol implementation for IC-based repositories
-- Authentication using Internet Identity
-- Efficient delta encoding for reduced data transfer
-- Local caching for improved performance
+### Modular Evolution
+- Canisters can be upgraded independently
+- New features can be added without platform-wide changes
+- Risk contained within appropriate layers
 
-The core Git integration functionality is developed in a separate repository: [git-remote-helper](https://github.com/ImitationGameLabs/git-remote-helper).
+## Benefits of This Architecture
 
-Within Gaia, this component will be integrated to handle:
-- Candid RPC calls to IC canisters via `ic_agent`
-- Authentication with IC identities
-- Transaction signing and verification
+### For Platform Stability
+- Core identity management remains stable
+- Platform upgrades don't affect community operations
+- Risk contained to appropriate layers
 
-### Gaia Canister
-The core platform component handling:
-- User profiles and authentication
-- Notification system
-- Repository management (create, delete, transfer)
-- Project exploration and discovery
-- Social features (starring, following)
-- Organization management
-- Activity feeds
-- Bounty marketplace
+### For Community Development
+- Communities can evolve independently
+- Different governance models possible per Forest
+- Economic experiments contained within communities
 
-### Gaia Frontend
-A modern web interface built with:
-- Svelte framework for reactive UI
-- Tailwind CSS for styling
-- Vite build tooling
-- Candid JS for canister interaction
-
-Provides features including:
-- Repository browsing and management
-- Code viewing and editing
-- Issue tracking
-- Pull request workflows
-- User dashboard
+### For User Experience
+- Unified identity across all communities
+- Cross-community discovery and social features
+- Consistent platform experience with community customization

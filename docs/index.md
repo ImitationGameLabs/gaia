@@ -36,8 +36,17 @@ Welcome to the central guide for Gaia's documentation. This page provides a stru
 | Document                                             | Status        | Description                                                              |
 | ---------------------------------------------------- | ------------- | ------------------------------------------------------------------------ |
 | [How to Contribute](../CONTRIBUTING.md)              | `Active`      | A guide for setting up the development environment and contribution flow. |
+| [Technology Stack](./implementations/tech-stack.md)  | `Active`      | Detailed overview of Gaia's technology choices and rationale.            |
 | [Technical Architecture](./implementations/architecture.md) | `Active`      | A high-level overview of Gaia's technical components and structure.      |
 | [Candid RPC Transport](./implementations/rpc-transport.md) | `In-Progress` | Deep-dive into the design of the Git remote helper's RPC mechanism.      |
+
+### Technical Architecture Deep Dives
+
+| Document                                             | Status        | Description                                                              |
+| ---------------------------------------------------- | ------------- | ------------------------------------------------------------------------ |
+| [Platform Layer Architecture](./implementations/architecture/platform-layer.md) | `Active`      | Detailed architecture of Gaia's platform infrastructure.                |
+| [Community Layer Architecture](./implementations/architecture/community-layer.md) | `Active`      | Architecture of Forest communities and their governance models.         |
+| [Repository Model Architecture](./implementations/architecture/repository-model.md) | `Active`      | Technical implementation of Git repositories within Forests.            |
 
 ### Development Conventions
 
