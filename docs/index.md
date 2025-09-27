@@ -52,7 +52,7 @@ Welcome to the central guide for Gaia's documentation. This page provides a stru
 
 | Document                                             | Status        | Description                                                              |
 | ---------------------------------------------------- | ------------- | ------------------------------------------------------------------------ |
-| [Frontend Tech Stack](./conventions/frontend/tech-stack.md) | `Active`      | Technology stack choices and framework conventions for frontend development. |
+| [Technology Stack](./implementations/tech-stack.md) | `Active`      | Complete technology stack overview (backend + frontend). |
 | [Frontend Coding Standards](./conventions/frontend/coding-standards.md) | `Active`      | Code style and best practices for frontend development.                  |
 | [Component Architecture](./conventions/frontend/component-architecture.md) | `Active`      | Component design patterns and architecture guidelines.                   |
 | [Hierarchical UX Design](./conventions/ux-design/hierarchical-design.md) | `Active`      | Progressive disclosure and layered customization design principles.      |
