@@ -69,3 +69,4 @@ These documents represent conceptual thinking and are subject to change.
 | [Progressive Decentralization](./explorations/progressive-decentralization.md) | `Exploration`  | Outlines a phased approach to transitioning from a core team to a full DAO. |
 | [Proof-of-Contribution](./explorations/proof-of-contribution.md)   | `Exploration`  | Details an economic model that treats contributors as co-owners.         |
 | [Soulbound Contributions](./explorations/soulbound-contributions.md) | `Exploration`  | Explores Git-based contribution records as a new paradigm for technical credentials. |
+| [Adoption Challenges](./explorations/adoption-challenges.md) | `Exploration`  | Analyzes barriers to user migration from GitHub and strategic approaches to overcome them. |

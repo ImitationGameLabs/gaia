@@ -14,6 +14,9 @@ To get the most out of Gaia, we recommend starting with these key documents that
 ### The Problems We're Solving
 [**Core Challenges**](./docs/problems.md) - Explore the fundamental problems facing open-source sustainability, from governance cold starts to contribution quantification.
 
+### Adoption Strategy
+[**Adoption Challenges**](./docs/explorations/adoption-challenges.md) - Understand the barriers to user migration from GitHub and our approach to overcoming them.
+
 ## Complete Documentation Guide
 
 For a structured overview of all our documentation with suggested reading paths for different audiences, visit our comprehensive documentation guide:
