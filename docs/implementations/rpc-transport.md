@@ -1,6 +1,6 @@
 # Candid RPC Transport
 
-![Git Remote Helper](images/git-remote-helper.jpg)
+![Git Remote Helper](../images/git-remote-helper.jpg)
 
  1. Design a `Remote` trait with stateless-rpc in mind.
 	```rust
@@ -29,4 +29,4 @@
 References:
  - https://github.com/GitoxideLabs/gitoxide
  - https://github.com/dfinity/stable-structures
- - http://github.com/ImitationGameLabs/git-remote-helper
+ - https://github.com/ImitationGameLabs/git-remote-helper
