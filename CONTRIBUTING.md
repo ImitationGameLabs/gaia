@@ -2,7 +2,7 @@
 
 We are thrilled that you are interested in contributing to Gaia! This guide provides everything you need to get your development environment set up and make your first contribution.
 
-To understand the core philosophy and goals of the project, we highly recommend reading our **[Project Vision](./docs/VISION.md)** first.
+To understand the core philosophy and goals of the project, we highly recommend reading our **[Project Vision](./docs/vision.md)** first.
 
 ## Prerequisites
 
